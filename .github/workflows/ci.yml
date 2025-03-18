@@ -23,12 +23,12 @@ jobs:
     # Build the Docker image
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.ECR_REPOSITORY }}:myapp-latest .
+        docker build -t myapp-latest .
 
     # Tag the image with the ECR repository
     - name: Tag Docker image
       run: |
-        docker tag ${{ secrets.ECR_REPOSITORY }}:myapp-latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:my-app-latest
+        docker tag myapp-latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:my-app-latest
     # Push the Docker image to Amazon ECR
     - name: Push Docker image to Amazon ECR
       run: |
