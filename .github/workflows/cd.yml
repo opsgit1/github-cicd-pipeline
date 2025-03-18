@@ -31,4 +31,4 @@ jobs:
     - name: Delete Old docker container
       run: sudo docker rm -f cicd-pipeline-container || true
     - name: Run Docker Container
-      run: sudo docker run -d -p 8080:8080 --name cicd-pipeline-container ${{ AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com:myapp-latest
+      run: sudo docker run -d -p 8080:8080 --name cicd-pipeline-container ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com:myapp-latest
