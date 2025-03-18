@@ -27,7 +27,7 @@ jobs:
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
 
     - name: Pull Docker image
-      run: sudo docker pull ${{ AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com:myapp-latest
+      run: sudo docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com:myapp-latest
     - name: Delete Old docker container
       run: sudo docker rm -f cicd-pipeline-container || true
     - name: Run Docker Container
