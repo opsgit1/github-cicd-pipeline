@@ -19,13 +19,13 @@ jobs:
     # Build the Docker image
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.ECR_REPOSITORY }}:myapp-${{ github_sha }} .
+        docker build -t ${{ secrets.ECR_REPOSITORY }}:myapp-${{ GITHUB_SHA }} .
 
     # Tag the image with the ECR repository
     - name: Tag Docker image
       run: |
-        docker tag ${{ secrets.ECR_REPOSITORY }}:myapp-${{ github_sha }} ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:my-app-${{ github_sha }}
+        docker tag ${{ secrets.ECR_REPOSITORY }}:myapp-${{ GITHUB_SHA }} ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:my-app-${{ GITHUB_SHA }}
     # Push the Docker image to Amazon ECR
     - name: Push Docker image to Amazon ECR
       run: |
-        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:my-app-${{ github_sha }}
+        docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:my-app-${{ GITHUB_SHA }}
